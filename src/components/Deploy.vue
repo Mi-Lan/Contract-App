@@ -1,6 +1,6 @@
 <template>
 <div>
-    Deploy component
+    In progress....
 </div>
     
 </template>
