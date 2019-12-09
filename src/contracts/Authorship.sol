@@ -10,7 +10,9 @@ contract Author{
     }
     
     mapping(bytes32=>Creator) songToStruct;
-    bytes32 [] public songList;
+    string [] public songList;
+    
+    int public counter;
     
     address administrator;
     
@@ -25,14 +27,14 @@ contract Author{
         
         songToStruct[song]=Creator(forSelling,price,msg.sender);
 
-        songList.push(song);
+        songList.push(songName);
+        
+        counter+=1;
         
         return "succesfull";
         
     }
-    function songLister() public returns(bytes32[] memory ){
-        return songList;
-    }
+    
   
         
     

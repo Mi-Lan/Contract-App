@@ -1,7 +1,7 @@
 import web3 from './web3';
-const {abi}=require('./contracts/author.json');
+const {abi}=require('./contracts/Author.json');
 
-const address="0x70737A8a04B96379341a65c72690d59502e257A6";
+const address="0x3eCa84aC704F61AfC50a3d2af3abE4CDa5FFe952";
 
 
    async function milan(){ 
