@@ -19,7 +19,7 @@
 
         </div>
     </div>
-    
+
       <div>Song list:</div>
           <ul v-for="(item,index) in list" class="list-group" :key=index>
               <li class="list-group-item">{{item}}: {{priceList[index]}} wei</li>
@@ -29,8 +29,7 @@
 </template>
 
 <script>
-import web3 from "../web3.js";
-import contract from "../contract.js";
+
 //components
 import avaliable from './functions/avaliability'
 import buy from './functions/buy'
@@ -54,36 +53,15 @@ export default {
   },
   methods:{
    
-   async lister(){
-  this.list=[]
-  this.priceList=[]
-  await web3.eth.getAccounts()
-.then(()=>{
-     contract.methods.counter().call()
-    .then(async(res)=>{
-      
-      for (var item=0;item<res;item++){
-        
-        await contract.methods.songList(item).call()
-        .then(async(value)=>{
-          await contract.methods.getPrice(value).call()
-          .then((price)=>{
-            this.priceList.push(price)
-          })
-          this.list.push(value)
-        })
-      }
-      
-    }).catch((err)=>{
-      console.log(err)
-    })
-})
-}
+ 
   },
   
 
    mounted: function mounted(){
-    this.lister()
+    this.$store.dispatch('listenerCount')
+    
+    this.list=this.$store.state.list
+    this.priceList=this.$store.state.priceList
     }
     
  
