@@ -50,7 +50,7 @@ export default {
                   })
               })
          }else{
-            alert('Provide input!')
+            alert('Provide input and login to metamask!')
             }
             this.avaliability.song=null
             this.avaliability.bool=null

@@ -51,15 +51,14 @@ export default {
     owner
 
   },
-  methods:{
-   
- 
-  },
+  
   
 
    mounted: function mounted(){
+     
     this.$store.dispatch('listenerCount')
     
+
     this.list=this.$store.state.list
     this.priceList=this.$store.state.priceList
     }

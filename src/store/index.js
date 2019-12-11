@@ -13,16 +13,16 @@ export default new Vuex.Store({
 
   },
   mutations: {
-    price:({state,payload})=>{
+    list:(state,payload)=>{
       state.list.push(payload)
     },
-    priceList:({state,payload})=>{
+    priceList:(state,payload)=>{
       state.priceList.push(payload)
     }
   },
   //asynchronous actions go here
   actions: {
-    async listenerCount({commit}){
+     listenerCount:async ({commit})=>{
 
       
       await web3.eth.getAccounts()
@@ -37,9 +37,12 @@ export default new Vuex.Store({
               await contract.methods.getPrice(value).call()
               .then((price)=>{
               //  this.priceList.push(price)
+              
               commit('priceList',price)
+              
               })
-              commit('priceList',value)
+              
+              commit('list',value)
               //this.list.push(value)
             })
           }

@@ -25,20 +25,21 @@ export default {
             },
             methods:{
                  async buy(){
-                     
+                  await  this.$store.dispatch('listenerCount')
+                  
                 if(this.songOwner!=null){
-                    for(var item in this.list){
-                    if(this.list[item]==this.songOwner){
+                    for(var item in this.$store.state.list){
+                    if(this.$store.state.list[item]==this.songOwner){
                             await web3.eth.getAccounts()
                             .then(async (res)=>{
-                            await contract.methods.buyRights(this.songOwner).send({from:res[0],gas:'200000',gasLimit:'200000000',value:this.priceList[item]})
+                            await contract.methods.buyRights(this.songOwner).send({from:res[0],gas:'200000',gasLimit:'200000000',value:this.$store.state.priceList[item]})
                             
                             .then(res=>{
                             console.log(res)
                     }).catch((err)=>{
-                    console.log(err)
+                    alert("Make sure to login to maetask",err)
                 })})
-                this.song.owner==null
+                this.songOwner==null
                 }}}
                     },
                      }

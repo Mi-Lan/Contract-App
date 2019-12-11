@@ -55,11 +55,11 @@ export default {
                await contract.methods.claimAuthorship(this.ownership.song,this.ownership.bool,this.ownership.number).send({from:res[0],gas:'200000',gasLimit:'200000000'})
                     
                   .then(async (res)=>{
-                    await this.lister();
+                    await this.$store.listenerCount()
                     
                     console.log(res)
                   }).catch((err)=>{
-                    console.log(err)
+                    alert("Make sure to login to maetask",err)
         })
       })
       }else{
